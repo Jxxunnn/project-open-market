@@ -1,6 +1,10 @@
+import Thumbnail from "./Thumbnail.js";
+import Contents from "./Contents.js";
+
 export default function Product({ $target, initialState }) {
   const $product = document.createElement("li");
-  $target.appendChild($product);
+  const $container = document.createElement("div");
+  $container.className = "flex flex-col group";
 
   this.state = initialState;
 
@@ -10,8 +14,12 @@ export default function Product({ $target, initialState }) {
   };
 
   this.render = () => {
+    $target.appendChild($product);
+    $product.appendChild($container);
+
     if (!this.state) return;
-    $product.innerHTML = `${this.state.id}`;
+    new Thumbnail({ $target: $container, initialState: this.state });
+    new Contents({ $target: $container, initialState: this.state });
   };
   this.render();
 }
@@ -19,8 +27,11 @@ export default function Product({ $target, initialState }) {
 /* 
 .template = () => {};
 
-1. 할인이 있는 경우, 없는 경우
-2. 하트도 누를 때마다 UI 변경되잖아.
-3. 이벤트도 여기서 달아줘야겠네.
-4. anchor 컴포넌트도 여기서 불러줘야 함.
+- Thumbnail
+재고가 없다면 soldout UI를 보여준다.
+
+- Contents
+1. 할인 중이라면 dicount UI를 보여준다.
+2. 하트를 누르면 버튼의 UI가 변경된다. 하트의 상태를 로컬스토리지에 보관한다.
+3. anchor 컴포넌트를 포함한다.
 */
