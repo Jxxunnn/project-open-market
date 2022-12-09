@@ -69,9 +69,14 @@ export default function Content({ $target, initialState }) {
 
   this.render();
 
+  $title.addEventListener("click", () => {
+    console.log(this);
+  });
+
   $btn.addEventListener("click", (e) => {
+    console.log(this);
     $btn.classList.toggle("empty");
-    const setWishList = () => {
+    const handleWishList = () => {
       if (!localStorage.getItem("wished")) {
         localStorage.setItem("wished", JSON.stringify([]));
       }
@@ -79,11 +84,18 @@ export default function Content({ $target, initialState }) {
       wishList = JSON.parse(wishList);
       wishList.push(this.state.id);
       wishList = [...new Set(wishList)];
+
+      if ($btn.classList.contains("empty")) {
+        wishList = wishList.filter((id) => {
+          return this.state.id !== id;
+        });
+        localStorage.removeItem("wished");
+        console.log(wishList);
+      }
       localStorage.setItem("wished", JSON.stringify(wishList));
     };
 
     if (!$btn.classList.contains("empty")) {
-      setWishList();
       $btn.innerHTML = `<svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
@@ -110,5 +122,6 @@ export default function Content({ $target, initialState }) {
       />
     </svg>`;
     }
+    handleWishList();
   });
 }
