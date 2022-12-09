@@ -1,11 +1,12 @@
 import { API_END_POINT } from "../../utils/api.js";
+import { routeChange } from "../../utils/router.js";
 
 export default function Thumbnail({ $target, initialState }) {
   const $thumbnail = document.createElement("a");
-  $thumbnail.href = "#;";
-  $thumbnail.className = "relative cursor-pointer";
-
   this.state = initialState;
+  $thumbnail.className = "relative cursor-pointer";
+  $thumbnail.href = "javascript:;";
+  $thumbnail.dataset.productId = this.state.id;
 
   this.setStatae = (nextState) => {
     this.state = nextState;
@@ -19,7 +20,7 @@ export default function Thumbnail({ $target, initialState }) {
         <img
           src=${imgUrl}
           alt="#"
-          class="w-72 rounded-2xl aspect-square"
+          class="rounded-2xl aspect-square"
         />
         ${
           this.state.stockCount
@@ -29,4 +30,12 @@ export default function Thumbnail({ $target, initialState }) {
       `;
   };
   this.render();
+
+  $thumbnail.addEventListener("click", (e) => {
+    const { productId } = $thumbnail.dataset;
+
+    if (productId) {
+      routeChange(`/products/${productId}`);
+    }
+  });
 }
