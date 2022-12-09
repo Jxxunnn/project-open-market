@@ -1,3 +1,5 @@
+import { routeChange } from "../../utils/router.js";
+
 export default function Content({ $target, initialState }) {
   this.state = initialState;
 
@@ -69,8 +71,12 @@ export default function Content({ $target, initialState }) {
 
   this.render();
 
-  $title.addEventListener("click", () => {
-    console.log(this);
+  $title.addEventListener("click", (e) => {
+    const { productId } = $title.dataset;
+
+    if (productId) {
+      routeChange(`/products/${productId}`);
+    }
   });
 
   $btn.addEventListener("click", (e) => {
