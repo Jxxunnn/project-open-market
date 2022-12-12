@@ -14,38 +14,13 @@ export default function ProductList({ $target, initialState }) {
 
   this.render = () => {
     $target.appendChild($productList);
-    this.state.forEach((product) => {
-      new Product({ $target: $productList, initialState: product });
+    this.state.forEach((productData) => {
+      const product = new Product({
+        $target: $productList,
+        initialState: productData,
+      });
     });
   };
 
   this.render();
 }
-
-/* 
- if (!this.state) return;
-    $productList.innerHTML = `${this.state
-      .map((product) =>
-        console.log(
-          typeof new Product({ $target: $productList, initialState: product })
-        )
-      )
-      .join("")}`;
-
-*/
-
-/* 
-this.render = () => {
-    if (!this.state) return;
-    $productList.innerHTML = `${this.state
-      .map(
-        
-         (product) =>
-           new Product({
-          $target: $productList,
-          initialState: product,
-        }).render()
-        )
-        .join("")}`;
-    };
-*/

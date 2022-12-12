@@ -4,7 +4,7 @@ export default function ProductDetailPage({ $target, productId }) {
   };
   const $page = document.createElement("section");
   $page.className = "ProductDetailPage";
-  $page.innerHTML = "<h1>상품 정보</h1>";
+  $page.innerHTML = "<h2>상품 정보 페이지</h2>";
 
   this.render = () => {
     $target.appendChild($page);
