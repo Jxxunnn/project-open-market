@@ -1,9 +1,11 @@
+import { routeChange } from "../../utils/router.js";
+
 export default function Anchor({ $target, href }) {
   const $aside = document.createElement("aside");
   const $anchor = document.createElement("a");
   $anchor.className =
     "fixed bottom-0 right-0 flex items-center justify-center p-3 m-2 duration-200 bg-purple-600 rounded-full cursor-pointer w-14 h-14 xl:h-16 xl:w-16 animate-bounce";
-
+  $anchor.href = "javascript:;";
   this.render = () => {
     $target.appendChild($aside);
     $aside.appendChild($anchor);
@@ -45,5 +47,12 @@ export default function Anchor({ $target, href }) {
     }
   };
   this.render();
+  $anchor.addEventListener("click", (e) => {
+    if (href === "home") {
+      routeChange("/");
+    }
+    if (href === "cart") {
+      routeChange("cart");
+    }
+  });
 }
-//href에 따라서 svg 변경

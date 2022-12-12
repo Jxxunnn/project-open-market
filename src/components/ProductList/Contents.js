@@ -1,7 +1,8 @@
+import { API_END_POINT } from "../../utils/api.js";
+import Content from "./Content.js";
+import Price from "./Price.js";
+
 export default function Contents({ $target, initialState }) {
-  const $thumbnail = document.createElement("a");
-  $thumbnail.href = "#;";
-  $thumbnail.className = "relative cursor-pointer";
   this.state = initialState;
 
   this.setStatae = (nextState) => {
@@ -9,6 +10,9 @@ export default function Contents({ $target, initialState }) {
     this.render();
   };
 
-  this.render = () => {};
+  this.render = () => {
+    const content = new Content({ $target, initialState });
+    const price = new Price({ $target, initialState });
+  };
   this.render();
 }
