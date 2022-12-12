@@ -461,6 +461,40 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-backdrop-sepia:  ;
 }
 
+.container {
+  width: 100%;
+}
+
+@media (min-width: 640px) {
+  .container {
+    max-width: 640px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 768px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1024px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1280px;
+  }
+}
+
+@media (min-width: 1536px) {
+  .container {
+    max-width: 1536px;
+  }
+}
+
 .sr-only {
   position: absolute;
   width: 1px;
@@ -524,10 +558,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
-}
-
-.mb-4 {
-  margin-bottom: 1rem;
 }
 
 .mb-10 {
@@ -707,6 +737,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   flex-direction: column;
 }
 
+.items-start {
+  align-items: flex-start;
+}
+
 .items-center {
   align-items: center;
 }
@@ -834,11 +868,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   border-color: rgb(209 213 219 / var(--tw-border-opacity));
 }
 
-.bg-gray-900 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(17 24 39 / var(--tw-bg-opacity));
-}
-
 .bg-black {
   --tw-bg-opacity: 1;
   background-color: rgb(0 0 0 / var(--tw-bg-opacity));
@@ -868,6 +897,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-bg-opacity: 0.4;
 }
 
+.p-40 {
+  padding: 10rem;
+}
+
 .p-5 {
   padding: 1.25rem;
 }
@@ -886,6 +919,14 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .p-6 {
   padding: 1.5rem;
+}
+
+.p-4 {
+  padding: 1rem;
+}
+
+.p-80 {
+  padding: 20rem;
 }
 
 .py-3 {
@@ -909,11 +950,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .text-center {
   text-align: center;
-}
-
-.text-4xl {
-  font-size: 2.25rem;
-  line-height: 2.5rem;
 }
 
 .text-2xl {
@@ -1143,6 +1179,10 @@ Ensure the default browser behavior of the `hidden` attribute.
     padding: 10rem;
   }
 
+  .md\:p-80 {
+    padding: 20rem;
+  }
+
   .md\:px-60 {
     padding-left: 15rem;
     padding-right: 15rem;
@@ -1188,6 +1228,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   .lg\:grid-cols-3 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
+
+  .lg\:p-40 {
+    padding: 10rem;
+  }
 }
 
 @media (min-width: 1280px) {
@@ -1197,5 +1241,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 
   .xl\:w-16 {
     width: 4rem;
+  }
+}
+
+@media (min-width: 1536px) {
+  .\32xl\:p-80 {
+    padding: 20rem;
   }
 }
