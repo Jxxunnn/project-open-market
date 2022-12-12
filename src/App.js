@@ -1,6 +1,7 @@
 import ProductListPage from "./pages/ProductListPage.js";
 import ProductDetailPage from "./pages/ProductDetailPage.js";
 import CartPage from "./pages/CartPage.js";
+import ErrorPage from "./pages/ErrorPage.js";
 import { init } from "./utils/router.js";
 
 export default function App({ $target }) {
@@ -18,6 +19,8 @@ export default function App({ $target }) {
       }).render();
     } else if (pathname === "/cart") {
       new CartPage({ $target }).render();
+    } else {
+      new ErrorPage({ $target }).render();
     }
   };
   init(this.route);
