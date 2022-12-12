@@ -96,7 +96,6 @@ export default function Content({ $target, initialState }) {
           return this.state.id !== id;
         });
         localStorage.removeItem("wished");
-        console.log(wishList);
       }
       localStorage.setItem("wished", JSON.stringify(wishList));
     };

@@ -15,7 +15,7 @@ export default function Thumbnail({ $target, initialState }) {
 
   this.render = () => {
     $target.appendChild($thumbnail);
-    const imgUrl = `${API_END_POINT}/${this.state.thumbnailImg}`;
+    const imgUrl = `${API_END_POINT}/${this.state?.thumbnailImg}`;
     $thumbnail.innerHTML = ` 
         <img
           src=${imgUrl}
