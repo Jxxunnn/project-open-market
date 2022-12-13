@@ -80,7 +80,6 @@ export default function Content({ $target, initialState }) {
   });
 
   $btn.addEventListener("click", (e) => {
-    console.log(this);
     $btn.classList.toggle("empty");
     const handleWishList = () => {
       if (!localStorage.getItem("wished")) {

@@ -10,7 +10,6 @@ export default function Card({ $target, initialState }) {
     this.state = nextState;
     this.render();
   };
-  console.log(this.state);
 
   this.render = () => {
     $target.appendChild($card);
@@ -141,4 +140,6 @@ export default function Card({ $target, initialState }) {
   };
 
   this.render();
+
+  $card.addEventListener("click", (e) => {});
 }
