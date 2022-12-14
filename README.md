@@ -1,7 +1,7 @@
 # project-open-market
 
 ## Directory Structure
-
+```
 📁public
   ├─📄favicon.ico
   └─📄index.html
@@ -42,7 +42,7 @@
 📄package.json
 📄README.md
 📄tailwind.config.js
-
+```
 ## Issues
 
 ### Issue #1
