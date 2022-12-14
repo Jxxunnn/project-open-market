@@ -31,22 +31,22 @@ export default function Info({ $target, initialState }) {
 
   this.render();
 
-  // 2. 옵저버 인스턴스 생성
-  //   var observer = new MutationObserver(function (mutations) {
-  //     mutations.forEach(function (mutation) {
-  //       if (!!mutation) {
-  //         console.log(Info.state.orderQuantity);
-  //       }
-  //     });
-  //   });
+  //   2. 옵저버 인스턴스 생성
+  var observer = new MutationObserver(function (mutations) {
+    mutations.forEach(function (mutation) {
+      if (!!mutation) {
+        console.log(Info.state.orderQuantity);
+      }
+    });
+  });
 
-  // 3. 옵션 설정
-  //   var config = {
-  //     attributes: true,
-  //     childList: true,
-  //     characterData: true,
-  //   };
+  //   3. 옵션 설정
+  var config = {
+    attributes: true,
+    childList: true,
+    characterData: true,
+  };
 
-  // 4. 실행
-  //   observer.observe($target, config);
+  //   4. 실행
+  observer.observe($target, config);
 }
