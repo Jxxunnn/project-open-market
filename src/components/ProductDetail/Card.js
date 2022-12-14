@@ -23,9 +23,13 @@ export default function Card({ $target, initialState }) {
   };
 
   this.render = () => {
-    $target.appendChild($card);
+    console.log(1);
+    $target.insertAdjacentElement("afterbegin", $card);
     const imgUrl = `${API_END_POINT}/${this.state?.product?.thumbnailImg}`;
-    $card.innerHTML = `<div class="flex-1 mx-0 text-center md:mx-auto">
+    $card.innerHTML = ``;
+    $card.insertAdjacentHTML(
+      "beforeend",
+      `<div class="flex-1 mx-0 text-center md:mx-auto">
     <img
       src=${imgUrl}
       alt=${this.state?.product?.productName}
@@ -163,7 +167,8 @@ export default function Card({ $target, initialState }) {
       </button>
     </div>
   </div>
-</div>`;
+</div>`
+    );
   };
 
   this.render();

@@ -12,7 +12,8 @@ export default function Info({ $target, initialState }) {
   console.log(this.state);
 
   this.render = () => {
-    $target.appendChild($card);
+    console.log(2);
+    $target.insertAdjacentElement("beforeend", $card);
     $card.innerHTML = `
     <strong class="block mb-3">상품 정보</strong>
     <div class="flex flex-col md:flex-row border-y-2">
