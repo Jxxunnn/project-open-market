@@ -9,12 +9,12 @@ export default function ProductDetail({ $target, initialState }) {
   const $container = document.createElement("div");
   $container.innerHTML = `<h3 class="sr-only">상품 상세 정보</h3>`;
 
-  this.state = initialState;
-
   this.setState = (nextState) => {
     this.state = nextState;
     this.render();
   };
+
+  this.state = initialState;
 
   this.render = () => {
     $target.appendChild($productDetail);

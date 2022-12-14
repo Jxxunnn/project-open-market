@@ -10,7 +10,8 @@ export default function Card({ $target, initialState }) {
   const $card = document.createElement("div");
   $card.className = "flex flex-col gap-5 md:flex-row";
 
-  this.state = initialState;
+  this.state = { ...initialState, orderQuantity: 1 };
+
   if (getLocalStorageItemList("wished")?.includes(this.state.productId)) {
     this.state.wished = true;
   }
@@ -23,7 +24,6 @@ export default function Card({ $target, initialState }) {
   };
 
   this.render = () => {
-    console.log(1);
     $target.insertAdjacentElement("afterbegin", $card);
     const imgUrl = `${API_END_POINT}/${this.state?.product?.thumbnailImg}`;
     $card.innerHTML = ``;
@@ -52,7 +52,7 @@ export default function Card({ $target, initialState }) {
         <button
           aria-label="수량 감소 버튼"
           type="button"
-          class="flex items-center justify-center w-8 h-8 border rounded-l-sm"
+          class="delete flex items-center justify-center w-8 h-8 border rounded-l-sm"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -60,21 +60,22 @@ export default function Card({ $target, initialState }) {
             viewBox="0 0 24 24"
             stroke-width="0.8"
             stroke="currentColor"
-            class="w-6 h-6"
+            class="delete w-6 h-6"
           >
             <path
               stroke-linecap="round"
               stroke-linejoin="round"
               d="M18 12H6"
+              class="delete"
             />
           </svg></button
         ><span
           class="flex items-center justify-center w-8 h-8 border-y-[1px]"
-          >1</span
+          >${this.state.orderQuantity}</span
         ><button
           aria-label="수량 증가 버튼"
           type="button"
-          class="flex items-center justify-center w-8 h-8 border rounded-r-sm"
+          class="add flex items-center justify-center w-8 h-8 border rounded-r-sm"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -82,12 +83,13 @@ export default function Card({ $target, initialState }) {
             viewBox="0 0 24 24"
             stroke-width="0.8"
             stroke="currentColor"
-            class="w-6 h-6"
+            class="add w-6 h-6"
           >
             <path
               stroke-linecap="round"
               stroke-linejoin="round"
               d="M12 6v12m6-6H6"
+              class="add"
             />
           </svg>
         </button>
@@ -99,11 +101,15 @@ export default function Card({ $target, initialState }) {
       <span class="w-full font-bold md:w-auto">총 상품 금액</span
       ><span class="flex items-center w-full md:w-auto"
         ><span class="text-gray-500"
-          >총 수량 <strong class="text-red-500">1</strong>개 | </span
+          >총 수량 <strong class="text-red-500">${
+            this.state.orderQuantity
+          }</strong>개 | </span
         ><span>
           <strong
             class="block -mt-2 text-2xl font-bold text-red-500 md:text-3xl"
-            >13,500<span class="text-sm">원</span></strong
+            >${(
+              this.state.product.price * this.state.orderQuantity
+            ).toLocaleString()}<span class="text-sm">원</span></strong
           ></span
         ></span
       >
@@ -189,6 +195,31 @@ export default function Card({ $target, initialState }) {
         this.state.productId,
         this.state.stored
       );
+    }
+    if (e.target.classList.contains("add")) {
+      if (
+        this.state.stockCount - this.state.orederQuantity <
+        this.state.orederQuantity
+      ) {
+        alert("재고가 없습니다.😥");
+      }
+      if (this.state.orderQuantity > 4) {
+        alert("1인당 최대 5개 상품 주문 가능합니다.🥲");
+        return;
+      }
+      productDetailInfo[this.state.productId] = this.state.orderQuantity + 1;
+      this.setState({
+        ...this.state,
+        orderQuantity: this.state.orderQuantity + 1,
+      });
+    }
+    if (e.target.classList.contains("delete")) {
+      if (this.state.orderQuantity <= 1) return;
+      productDetailInfo[this.state.productId] = this.state.orderQuantity - 1;
+      this.setState({
+        ...this.state,
+        orderQuantity: this.state.orderQuantity - 1,
+      });
     }
     if (e.target.closest("a")) {
       routeChange(`/cart`);

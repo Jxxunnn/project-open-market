@@ -6,6 +6,7 @@ export default function ProductDetailPage({ $target, productId }) {
     productId,
     product: null,
   };
+  window.productDetailInfo = {};
   const $page = document.createElement("section");
   $page.className = "ProductDetailPage";
   $page.innerHTML = "<h2 class='sr-only'>상품 정보 페이지</h2>";
