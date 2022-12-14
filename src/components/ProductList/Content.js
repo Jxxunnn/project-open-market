@@ -11,7 +11,9 @@ export default function Content({ $target, initialState }) {
   $content.className = "flex justify-between mt-2 font-normal ";
 
   const $title = document.createElement("a");
-  $title.className = "text-sm cursor-pointer";
+  $title.className = `text-sm ${
+    this.state.stockCount ? "cursor-pointer" : "cursor-default"
+  }`;
   $title.href = "javascript:;";
   $title.dataset.productId = this.state.id;
   $title.textContent = this.state.productName;
@@ -78,7 +80,7 @@ export default function Content({ $target, initialState }) {
   $title.addEventListener("click", (e) => {
     const { productId } = $title.dataset;
 
-    if (productId) {
+    if (productId && this.state.stockCount) {
       routeChange(`/products/${productId}`);
     }
   });
