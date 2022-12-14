@@ -9,8 +9,11 @@ export default function Card({ $target, initialState }) {
   $card.className = "flex flex-col gap-5 md:flex-row";
 
   this.state = initialState;
-  if (getLocalStorageItemList("wished").includes(this.state.productId)) {
+  if (getLocalStorageItemList("wished")?.includes(this.state.productId)) {
     this.state.wished = true;
+  }
+  if (getLocalStorageItemList("stored")?.includes(this.state.productId)) {
+    this.state.stored = true;
   }
   this.setState = (nextState) => {
     this.state = nextState;
@@ -105,14 +108,14 @@ export default function Card({ $target, initialState }) {
         class="md:flex-[5_1_0%] flex-[3_1_0%] text-center text-white font-bold text-base md:text-xl py-2 md:py-4 bg-purple-600 rounded-lg"
         >바로 구매</a
       ><button
-        class="store flex items-center justify-center flex-1 border-2 rounded-lg"
+        class="stored flex items-center justify-center flex-1 border-2 rounded-lg"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
           stroke-width="1.5"
-          stroke="purple"
+          stroke=${this.state.stored ? "purple" : "#B3B3B3"}
           class="store w-6 h-6"
           aria-label="장바구니로 이동"
         >
@@ -169,8 +172,13 @@ export default function Card({ $target, initialState }) {
         this.state.wished
       );
     }
-    if (e.target.classList.contains("store")) {
-      console.log(1);
+    if (e.target.classList.contains("stored")) {
+      this.setState({ ...this.state, stored: !this.state.stored });
+      setLocalStorageItemList(
+        "stored",
+        this.state.productId,
+        this.state.stored
+      );
     }
   });
 }

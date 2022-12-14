@@ -1,4 +1,8 @@
 import { routeChange } from "../../utils/router.js";
+import {
+  getLocalStorageItemList,
+  setLocalStorageItemList,
+} from "../../utils/handleLocalStorageItemList.js";
 
 export default function Content({ $target, initialState }) {
   this.state = initialState;
