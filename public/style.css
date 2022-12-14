@@ -608,10 +608,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-top: 0.5rem;
 }
 
-.mr-0 {
-  margin-right: 0px;
-}
-
 .block {
   display: block;
 }
@@ -731,6 +727,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .cursor-not-allowed {
   cursor: not-allowed;
+}
+
+.cursor-default {
+  cursor: default;
 }
 
 .flex-row {
