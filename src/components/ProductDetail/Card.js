@@ -1,4 +1,6 @@
 import { API_END_POINT } from "../../utils/api.js";
+import { routeChange } from "../../utils/router.js";
+
 import {
   getLocalStorageItemList,
   setLocalStorageItemList,
@@ -174,7 +176,6 @@ export default function Card({ $target, initialState }) {
         this.state.productId,
         this.state.wished
       );
-      console.log(1);
     }
     if (e.target.classList.contains("stored")) {
       this.setState({ ...this.state, stored: !this.state.stored });
@@ -183,7 +184,9 @@ export default function Card({ $target, initialState }) {
         this.state.productId,
         this.state.stored
       );
-      console.log(2);
+    }
+    if (e.target.closest("a")) {
+      routeChange(`/cart`);
     }
   });
 }
