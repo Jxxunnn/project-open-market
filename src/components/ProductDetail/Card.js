@@ -26,6 +26,8 @@ export default function Card({ $target, initialState }) {
   this.render = () => {
     $target.insertAdjacentElement("afterbegin", $card);
     const imgUrl = `${API_END_POINT}/${this.state?.product?.thumbnailImg}`;
+    const price = this.state?.product?.price;
+    const discountRate = this.state.product?.discountRate;
     $card.innerHTML = ``;
     $card.insertAdjacentHTML(
       "beforeend",
@@ -36,15 +38,17 @@ export default function Card({ $target, initialState }) {
       class="w-40 md:w-auto aspect-square rounded-2xl"
     />
   </div>  <div class="md:flex-[1.2_1_0%] flex flex-col justify-between">
-  <!-- content-top -->
   <div>
     <p class="mb-3 text-xl md:text-2xl">${this.state?.product?.productName}</p>
     <p class="space-x-1 text-xl md:text-2xl">
-      <span class="font-bold">${this.state?.product?.price.toLocaleString()}</span
+      <span class="font-bold">${
+        discountRate
+          ? ((price * (100 - discountRate)) / (100).toFixed()).toLocaleString()
+          : this.state?.product?.price.toLocaleString()
+      }</span
       ><span class="text-sm">원</span>
     </p>
   </div>
-  <!-- content-bottom -->
   <div>
     <div>
       <p class="mb-1 text-gray-500">택배배송 / 무료배송</p>
@@ -107,9 +111,16 @@ export default function Card({ $target, initialState }) {
         ><span>
           <strong
             class="block -mt-2 text-2xl font-bold text-red-500 md:text-3xl"
-            >${(
-              this.state?.product?.price * this.state?.orderQuantity
-            ).toLocaleString()}<span class="text-sm">원</span></strong
+            >${
+              discountRate
+                ? (
+                    ((price * (100 - discountRate)) / (100).toFixed()) *
+                    this.state.orderQuantity
+                  ).toLocaleString()
+                : (
+                    this.state?.product?.price * this.state.orderQuantity
+                  ).toLocaleString()
+            }<span class="text-sm">원</span></strong
           ></span
         ></span
       >
@@ -129,7 +140,7 @@ export default function Card({ $target, initialState }) {
           stroke-width="1.5"
           stroke=${this.state?.stored ? "purple" : "#B3B3B3"}
           class="stored w-6 h-6"
-          aria-label="장바구니로 이동"
+          aria-label="장바구니에 담기"
         >
           <path
             stroke-linecap="round"
