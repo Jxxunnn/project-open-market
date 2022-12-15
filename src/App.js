@@ -9,7 +9,7 @@ export default function App({ $target }) {
     const { pathname } = location;
     $target.innerHTML = "";
 
-    if (pathname === "/project-open-market/") {
+    if (pathname === "/") {
       new ProductListPage({ $target }).render();
     } else if (pathname.indexOf("/products/") === 0) {
       const [, , productId] = pathname.split("/");
