@@ -40,7 +40,7 @@ export default function Card({ $target, initialState }) {
   <div>
     <p class="mb-3 text-xl md:text-2xl">${this.state?.product?.productName}</p>
     <p class="space-x-1 text-xl md:text-2xl">
-      <span class="font-bold">13,500</span
+      <span class="font-bold">${this.state?.product?.price.toLocaleString()}</span
       ><span class="text-sm">원</span>
     </p>
   </div>
@@ -71,7 +71,7 @@ export default function Card({ $target, initialState }) {
           </svg></button
         ><span
           class="flex items-center justify-center w-8 h-8 border-y-[1px]"
-          >${this.state.orderQuantity}</span
+          >${this.state?.orderQuantity}</span
         ><button
           aria-label="수량 증가 버튼"
           type="button"
@@ -102,13 +102,13 @@ export default function Card({ $target, initialState }) {
       ><span class="flex items-center w-full md:w-auto"
         ><span class="text-gray-500"
           >총 수량 <strong class="text-red-500">${
-            this.state.orderQuantity
+            this.state?.orderQuantity
           }</strong>개 | </span
         ><span>
           <strong
             class="block -mt-2 text-2xl font-bold text-red-500 md:text-3xl"
             >${(
-              this.state.product.price * this.state.orderQuantity
+              this.state?.product?.price * this.state?.orderQuantity
             ).toLocaleString()}<span class="text-sm">원</span></strong
           ></span
         ></span
@@ -127,7 +127,7 @@ export default function Card({ $target, initialState }) {
           fill="none"
           viewBox="0 0 24 24"
           stroke-width="1.5"
-          stroke=${this.state.stored ? "purple" : "#B3B3B3"}
+          stroke=${this.state?.stored ? "purple" : "#B3B3B3"}
           class="stored w-6 h-6"
           aria-label="장바구니로 이동"
         >
@@ -142,7 +142,7 @@ export default function Card({ $target, initialState }) {
         class="wished flex items-center justify-center flex-1 border-2 rounded-lg"
       >
        ${
-         this.state.wished
+         this.state?.wished
            ? `<svg
            xmlns="http://www.w3.org/2000/svg"
            viewBox="0 0 24 24"
@@ -184,22 +184,22 @@ export default function Card({ $target, initialState }) {
       this.setState({ ...this.state, wished: !this.state.wished });
       setLocalStorageItemList(
         "wished",
-        this.state.productId,
-        this.state.wished
+        this.state?.productId,
+        this.state?.wished
       );
     }
     if (e.target.classList.contains("stored")) {
       this.setState({ ...this.state, stored: !this.state.stored });
       setLocalStorageItemList(
         "stored",
-        this.state.productId,
-        this.state.stored
+        this.state?.productId,
+        this.state?.stored
       );
     }
     if (e.target.classList.contains("add")) {
       if (
-        this.state.stockCount - this.state.orederQuantity <
-        this.state.orederQuantity
+        this.state?.stockCount - this.state?.orderQuantity <
+        this.state?.orderQuantity
       ) {
         alert("재고가 없습니다.😥");
       }
@@ -207,18 +207,18 @@ export default function Card({ $target, initialState }) {
         alert("1인당 최대 5개 상품 주문 가능합니다.🥲");
         return;
       }
-      productDetailInfo[this.state.productId] = this.state.orderQuantity + 1;
+      productDetailInfo[this.state?.productId] = this.state?.orderQuantity + 1;
       this.setState({
         ...this.state,
-        orderQuantity: this.state.orderQuantity + 1,
+        orderQuantity: this.state?.orderQuantity + 1,
       });
     }
     if (e.target.classList.contains("delete")) {
-      if (this.state.orderQuantity <= 1) return;
-      productDetailInfo[this.state.productId] = this.state.orderQuantity - 1;
+      if (this.state?.orderQuantity <= 1) return;
+      productDetailInfo[this.state?.productId] = this.state?.orderQuantity - 1;
       this.setState({
         ...this.state,
-        orderQuantity: this.state.orderQuantity - 1,
+        orderQuantity: this.state?.orderQuantity - 1,
       });
     }
     if (e.target.closest("a")) {
