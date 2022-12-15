@@ -1,5 +1,6 @@
 export default function Info({ $target, initialState }) {
   const $card = document.createElement("div");
+
   $card.className = "mt-9";
 
   this.state = { ...initialState, orderQuantity: 1 };
@@ -22,7 +23,7 @@ export default function Info({ $target, initialState }) {
       </dl>
       <dl class="flex flex-1">
         <dt class="w-1/3 py-3 pl-2 bg-gray-100">재고 수량</dt>
-        <dd class="py-3 pl-2"><span>${
+        <dd class="py-3 pl-2"><span class="stock">${
           this.state?.product.stockCount - this.state.orderQuantity
         }</span><span>개</span></dd>
       </dl>
@@ -31,22 +32,31 @@ export default function Info({ $target, initialState }) {
 
   this.render();
 
-  //   2. 옵저버 인스턴스 생성
-  var observer = new MutationObserver(function (mutations) {
+  const productId = this.state.productId;
+  const stockQuantity =
+    this.state?.product.stockCount - this.state.orderQuantity;
+
+  var observer = new MutationObserver(function (
+    mutations,
+    _,
+    stock = stockQuantity,
+    id = productId
+  ) {
     mutations.forEach(function (mutation) {
-      if (!!mutation) {
-        console.log(Info.state.orderQuantity);
+      if (mutation) {
+        if (window.productDetailInfo[id]) {
+          document.querySelector(".stock").innerHTML = `${
+            stock - window.productDetailInfo[id] + 1
+          }`;
+        }
       }
     });
   });
-
-  //   3. 옵션 설정
   var config = {
     attributes: true,
     childList: true,
     characterData: true,
   };
 
-  //   4. 실행
   observer.observe($target, config);
 }
