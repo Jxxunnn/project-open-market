@@ -31,9 +31,9 @@ export default function Info({ $target, initialState }) {
 
   this.render();
 
-  const productId = this.state.productId;
+  const productId = this.state?.productId;
   const stockQuantity =
-    this.state?.product.stockCount - this.state.orderQuantity;
+    this.state?.product?.stockCount - this.state?.orderQuantity;
 
   var observer = new MutationObserver(function (
     mutations,

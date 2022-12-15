@@ -12,7 +12,7 @@ export default function InfoImage({ $target, initialState }) {
 
   this.render = () => {
     $target.appendChild($infoImage);
-    const imgUrls = [...this.state?.product.detailInfoImage].map(
+    const imgUrls = [...this.state?.product?.detailInfoImage].map(
       (path) => `${API_END_POINT}/${path}`
     );
     $infoImage.innerHTML = `${imgUrls
@@ -20,7 +20,7 @@ export default function InfoImage({ $target, initialState }) {
         (url) => `
     <img
     src=${url}
-    alt=${this.state.productName}
+    alt=${this.state?.productName}
   />
     `
       )

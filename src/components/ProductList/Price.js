@@ -14,7 +14,7 @@ export default function Price({ $target, initialState }) {
   this.render = () => {
     $target.appendChild($price);
     const price = toKRCurrency(this.state.price);
-    const discountRate = this.state.discountRate;
+    const discountRate = this.state?.discountRate;
     if (discountRate) {
       $price.innerHTML = `<strong class="text-lg font-bold">${toKRCurrency(
         (this.state.price * (100 - discountRate)) / (100).toFixed()

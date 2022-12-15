@@ -5,7 +5,7 @@ export default function Thumbnail({ $target, initialState }) {
   const $thumbnail = document.createElement("a");
   this.state = initialState;
   $thumbnail.className = `relative ${
-    this.state.stockCount ? "cursor-pointer" : "cursor-default"
+    this.state?.stockCount ? "cursor-pointer" : "cursor-default"
   }`;
   $thumbnail.href = "javascript:;";
   $thumbnail.dataset.productId = this.state.id;
@@ -36,7 +36,7 @@ export default function Thumbnail({ $target, initialState }) {
   $thumbnail.addEventListener("click", (e) => {
     const { productId } = $thumbnail.dataset;
 
-    if (productId && this.state.stockCount) {
+    if (productId && this.state?.stockCount) {
       routeChange(`/products/${productId}`);
     }
   });

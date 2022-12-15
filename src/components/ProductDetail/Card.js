@@ -12,10 +12,10 @@ export default function Card({ $target, initialState }) {
 
   this.state = { ...initialState, orderQuantity: 1 };
 
-  if (getLocalStorageItemList("wished")?.includes(this.state.productId)) {
+  if (getLocalStorageItemList("wished")?.includes(this.state?.productId)) {
     this.state.wished = true;
   }
-  if (getLocalStorageItemList("stored")?.includes(this.state.productId)) {
+  if (getLocalStorageItemList("stored")?.includes(this.state?.productId)) {
     this.state.stored = true;
   }
   this.setState = (nextState) => {
@@ -115,10 +115,10 @@ export default function Card({ $target, initialState }) {
               discountRate
                 ? (
                     ((price * (100 - discountRate)) / (100).toFixed()) *
-                    this.state.orderQuantity
+                    this.state?.orderQuantity
                   ).toLocaleString()
                 : (
-                    this.state?.product?.price * this.state.orderQuantity
+                    this.state?.product?.price * this.state?.orderQuantity
                   ).toLocaleString()
             }<span class="text-sm">원</span></strong
           ></span
@@ -192,7 +192,7 @@ export default function Card({ $target, initialState }) {
 
   $card.addEventListener("click", (e) => {
     if (e.target.classList.contains("wished")) {
-      this.setState({ ...this.state, wished: !this.state.wished });
+      this.setState({ ...this.state, wished: !this.state?.wished });
       setLocalStorageItemList(
         "wished",
         this.state?.productId,
@@ -200,7 +200,7 @@ export default function Card({ $target, initialState }) {
       );
     }
     if (e.target.classList.contains("stored")) {
-      this.setState({ ...this.state, stored: !this.state.stored });
+      this.setState({ ...this.state, stored: !this.state?.stored });
       setLocalStorageItemList(
         "stored",
         this.state?.productId,
@@ -214,7 +214,7 @@ export default function Card({ $target, initialState }) {
       ) {
         alert("재고가 없습니다.😥");
       }
-      if (this.state.orderQuantity > 4) {
+      if (this.state?.orderQuantity > 4) {
         alert("1인당 최대 5개 상품 주문 가능합니다.🥲");
         return;
       }

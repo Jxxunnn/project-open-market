@@ -29,15 +29,3 @@ export default function Product({ $target, initialState }) {
   };
   this.render();
 }
-
-/* 
-.template = () => {};
-
-- Thumbnail
-재고가 없다면 soldout UI를 보여준다.
-
-- Contents
-1. 할인 중이라면 dicount UI를 보여준다.
-2. 하트를 누르면 버튼의 UI가 변경된다. 하트의 상태를 로컬스토리지에 보관한다.
-3. anchor 컴포넌트를 포함한다.
-*/

@@ -12,11 +12,11 @@ export default function Content({ $target, initialState }) {
 
   const $title = document.createElement("a");
   $title.className = `text-sm ${
-    this.state.stockCount ? "cursor-pointer" : "cursor-default"
+    this.state?.stockCount ? "cursor-pointer" : "cursor-default"
   }`;
   $title.href = "javascript:;";
   $title.dataset.productId = this.state.id;
-  $title.textContent = this.state.productName;
+  $title.textContent = this.state?.productName;
 
   const $btn = document.createElement("button");
   $btn.type = "button";
