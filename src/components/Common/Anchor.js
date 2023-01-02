@@ -48,7 +48,7 @@ export default function Anchor({ $target, href }) {
   };
   this.render();
   $anchor.addEventListener("click", (e) => {
-    if (href === "home") {
+    if (href === "main") {
       routeChange("/");
     }
     if (href === "cart") {
