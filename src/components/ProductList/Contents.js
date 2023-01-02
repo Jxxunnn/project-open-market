@@ -5,7 +5,7 @@ import Price from "./Price.js";
 export default function Contents({ $target, initialState }) {
   this.state = initialState;
 
-  this.setStatae = (nextState) => {
+  this.setState = (nextState) => {
     this.state = nextState;
     this.render();
   };

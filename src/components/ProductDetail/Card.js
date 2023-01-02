@@ -129,7 +129,7 @@ export default function Card({ $target, initialState }) {
       <a
         href="javascript:;"
         class="md:flex-[5_1_0%] flex-[3_1_0%] text-center text-white font-bold text-base md:text-xl py-2 md:py-4 bg-purple-600 rounded-lg"
-        >바로 구매</a
+        >장바구니로 이동</a
       ><button
         class="stored flex items-center justify-center flex-1 border-2 rounded-lg"
       >
