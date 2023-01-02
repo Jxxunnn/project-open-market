@@ -1,5 +1,8 @@
 # project-open-market
-https://chic-melba-c1859b.netlify.app/
+
+🛠Vanilla JavaScript로 SPA 구현하기
+
+[실행url](https://chic-melba-c1859b.netlify.app/)
 
 ## Directory Structure
 
@@ -11,6 +14,9 @@ https://chic-melba-c1859b.netlify.app/
   ├─📁components
   │   ├─📁Cart
   │   │   └─📄index.js
+  │   │   └─📄Order.js
+  │   │   └─📄OrderList.js
+  │   │   └─📄Payment.js
   │   ├─📁Common
   │   │   ├─📄Anchor.js
   │   │   └─📄Header.js
