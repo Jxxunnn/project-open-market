@@ -117,9 +117,24 @@ index.html에 상대경로인 ./을 지정했기 때문이었다.
 
 ### Issue #4
 
-> history API를 이용하여 URL만 업데이트하면서 웹 브라우저의 기본적인 페이지 이동 처리를 방지하려 하였으나, pushState를 통해 URL이 변경된 것을 감지하능 기능을 구현해야 하는 문제가 생겼다.
+> history API를 이용하여 URL만 업데이트하면서 웹 브라우저의 기본적인 페이지 이동 처리를 방지하려 하였으나, pushState를 통해 URL이 변경된 것을 감지하는 기능을 구현해야 하는 문제가 생겼다.
 
 커스텀 이벤트를 사용하여 route가 변경된다면 콜백 함수를 호출하도록 이벤트를 바인딩하여 해결하였다.
+
+```js
+const ROUTE_CHANGE_EVENT = "ROUTE_CHANGE";
+
+export const init = (onRouteChange) => {
+  window.addEventListener(ROUTE_CHANGE_EVENT, () => {
+    onRouteChange();
+  });
+};
+
+export const routeChange = (url, params) => {
+  history.pushState(null, null, url);
+  window.dispatchEvent(new CustomEvent(ROUTE_CHANGE_EVENT, params));
+};
+```
 
 ### Issue #5
 
