@@ -36,7 +36,6 @@ export default function Payment({ $target, initialState }) {
   }, 0);
 
   const payment = totalPrice - (totalPrice - discountedPrice);
-  console.log(totalPrice, discountedPrice);
 
   this.render = () => {
     $target.appendChild($payment);
