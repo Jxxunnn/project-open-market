@@ -144,3 +144,27 @@ insetAdjacentHTML() 메서드의 position 인자를 사용하여 순서가 유�
 > 주문 수량의 상태를 개별 컴포넌트에 전달해주어야 하는 문제가 생겼다.
 
 공유할 상태 값을 함수 밖 영역의 스코프에 전역 변수로 설정한 후 MutationObserver로 타겟한 DOM 변경을 감시하여 다른 컴포넌트의 상태가 변경되었을 때 재렌더링하며 상태를 공유받는 방법으로 해결하였다.
+
+```js
+  // 옵저버 인스턴스 생성
+  const observer = new MutationObserver(function (mutations) {
+    mutations.forEach(function (mutation) {
+      if (!!mutation) {
+        console.log(Info.state.orderQuantity);
+      }
+    });
+  });
+
+  // 옵션 설정
+  const config = {
+    attributes: true,
+    childList: true,
+    characterData: true,
+  };
+
+  // 실행
+  observer.observe($target, config);
+}
+```
+![Animation](https://user-images.githubusercontent.com/86228307/211707321-d1f88b78-bf81-439d-8591-c9389f8a681e.gif)
+
