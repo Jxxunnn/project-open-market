@@ -166,5 +166,5 @@ insetAdjacentHTML() 메서드의 position 인자를 사용하여 순서가 유�
   observer.observe($target, config);
 }
 ```
-![Animation](https://user-images.githubusercontent.com/86228307/211707321-d1f88b78-bf81-439d-8591-c9389f8a681e.gif)
+![Animation2](https://user-images.githubusercontent.com/86228307/211716882-a605f4ca-f80d-499a-90b2-a2f592cceec1.gif)
 
