@@ -35,7 +35,8 @@ export default function Payment({ $target, initialState }) {
     }
   }, 0);
 
-  const payment = totalPrice - discountedPrice;
+  const payment = totalPrice - (totalPrice - discountedPrice);
+  console.log(totalPrice, discountedPrice);
 
   this.render = () => {
     $target.appendChild($payment);
@@ -59,7 +60,7 @@ export default function Payment({ $target, initialState }) {
     </p>
     <p class="flex flex-row items-center justify-between md:flex-col">
       <span class="font-bold">결제 금액</span
-      ><span class="text-xl font-bold md:text-4xl">46,500원</span>
+      ><span class="text-xl font-bold md:text-4xl">${totalPrice.toLocaleString()}원</span>
     </p>
   </div>
   <a
