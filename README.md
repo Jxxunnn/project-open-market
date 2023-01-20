@@ -44,6 +44,12 @@
  
 <br/>
 
+## 최종 구현 화면 gif
+
+![Animation2](https://user-images.githubusercontent.com/86228307/211716882-a605f4ca-f80d-499a-90b2-a2f592cceec1.gif)
+
+<br/>
+
 ## Directory Structure
 
 ```
@@ -248,7 +254,5 @@ insetAdjacentHTML() 메서드의 position 인자를 사용하여 순서가 유�
 }
 ```
 <br/>
-## 최종 구현 화면 gif
 
-![Animation2](https://user-images.githubusercontent.com/86228307/211716882-a605f4ca-f80d-499a-90b2-a2f592cceec1.gif)
 
