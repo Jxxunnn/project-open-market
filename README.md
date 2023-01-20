@@ -62,6 +62,39 @@
 📄tailwind.config.js
 ```
 
+## Route
+```js
+import ProductListPage from "./pages/ProductListPage.js";
+import ProductDetailPage from "./pages/ProductDetailPage.js";
+import CartPage from "./pages/CartPage.js";
+import ErrorPage from "./pages/ErrorPage.js";
+import { init } from "./utils/router.js";
+
+export default function App({ $target }) {
+  this.route = () => {
+    const { pathname } = location;
+    $target.innerHTML = "";
+
+    if (pathname === "/") {
+      new ProductListPage({ $target }).render();
+    } else if (pathname.indexOf("/products/") === 0) {
+      const [, , productId] = pathname.split("/");
+      new ProductDetailPage({
+        $target,
+        productId,
+      }).render();
+    } else if (pathname === "/cart") {
+      new CartPage({ $target }).render();
+    } else {
+      new ErrorPage({ $target }).render();
+    }
+  };
+  init(this.route);
+  this.route();
+  window.addEventListener("popstate", this.route);
+}
+```
+
 ## Issues
 
 ### Issue #1
@@ -181,5 +214,7 @@ insetAdjacentHTML() 메서드의 position 인자를 사용하여 순서가 유�
   observer.observe($target, config);
 }
 ```
+## 최종 구현 화면 gif
+
 ![Animation2](https://user-images.githubusercontent.com/86228307/211716882-a605f4ca-f80d-499a-90b2-a2f592cceec1.gif)
 
