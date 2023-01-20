@@ -92,6 +92,7 @@
 📄tailwind.config.js
 ```
 <br/>
+
 ## Route
 
 ```js
@@ -126,6 +127,7 @@ export default function App({ $target }) {
 }
 ```
 <br/>
+
 ## Issues
 
 ### Issue #1
