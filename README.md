@@ -226,7 +226,7 @@ localStorage에 찜한 상품에 대한 state 데이터를 저장하여 해결�
 
 insetAdjacentHTML() 메서드의 position 인자를 사용하여 순서가 유지되도록 조정하였다.
 
-### Isseu #8
+### Issue #8
 
 > 주문 수량의 상태를 개별 컴포넌트에 전달해주어야 하는 문제가 생겼다.
 
@@ -255,4 +255,11 @@ insetAdjacentHTML() 메서드의 position 인자를 사용하여 순서가 유�
 ```
 <br/>
 
+### Issue #9
+
+> SPA를 구현하면서 하나의 파일에서 연결하고 있는 무수히 많은 파일들이생겼다. 여러번의 네트워크 통신을 감소시켜 성능 개선과 최적화가 필요하여 모듈 번들러를 사용했다.
+
+"vite": "^4.1.0"
+
+![image](https://user-images.githubusercontent.com/86228307/216877077-c68e6c63-0531-42e5-8978-99b50580b6d4.png)
 
