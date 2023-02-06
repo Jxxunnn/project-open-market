@@ -1,6 +1,6 @@
 # 오픈 마켓
-<img width="827" alt="스크린샷 2023-01-05 오전 1 40 20" src="https://user-images.githubusercontent.com/86228307/211706496-91e0c486-73ee-4114-a5a0-02a48bbfcdbb.png">
 
+<img width="827" alt="스크린샷 2023-01-05 오전 1 40 20" src="https://user-images.githubusercontent.com/86228307/211706496-91e0c486-73ee-4114-a5a0-02a48bbfcdbb.png">
 
 ## 소개 및 개요
 
@@ -8,9 +8,11 @@
 - 배포 URL : [🔗 오픈마켓](https://chic-melba-c1859b.netlify.app/)
 
 ### [🛠Vanilla JavaScript로 SPA 구현하기]
-순수 자바스크립트로 웹 컴포넌트를 만들고 SPA로 구현한 프로젝트입니다. 
-* React를 사용할 때는 DOM을 직접 조작할 일이 드물었는데 이번 프로젝트를 진행하면서 DOM 구조 및 관련 함수를 이해할 수 있었습니다.
-* 페이지 리로드 없이 라우팅 변경, root 태그만 있는 구조에서 컴포넌트를 렌더링하는 방법 등 SPA를 직접 구현하면서 SPA가 동작하는 방식을 로우 레벨에서 이해할 수 있었습니다.
+
+순수 자바스크립트로 웹 컴포넌트를 만들고 SPA로 구현한 프로젝트입니다.
+
+- React를 사용할 때는 DOM을 직접 조작할 일이 드물었는데 이번 프로젝트를 진행하면서 DOM 구조 및 관련 함수를 이해할 수 있었습니다.
+- 페이지 리로드 없이 라우팅 변경, root 태그만 있는 구조에서 컴포넌트를 렌더링하는 방법 등 SPA를 직접 구현하면서 SPA가 동작하는 방식을 로우 레벨에서 이해할 수 있었습니다.
 
 <br/>
 
@@ -166,5 +168,5 @@ insetAdjacentHTML() 메서드의 position 인자를 사용하여 순서가 유�
   observer.observe($target, config);
 }
 ```
-![Animation](https://user-images.githubusercontent.com/86228307/211707321-d1f88b78-bf81-439d-8591-c9389f8a681e.gif)
 
+![Animation](https://user-images.githubusercontent.com/86228307/211707321-d1f88b78-bf81-439d-8591-c9389f8a681e.gif)

@@ -14,7 +14,10 @@ export default function Order({ $target, initialState }) {
   let stored = getLocalStorageItemList("stored")?.map(
     (id) => this.state[id - 1]
   );
-  this.state = { ...initialState, storedList: [...stored] };
+
+  if (initialState) {
+    this.state = { ...initialState, storedList: [...stored] };
+  }
 
   this.setState = (nextState) => {
     this.state = nextState;
